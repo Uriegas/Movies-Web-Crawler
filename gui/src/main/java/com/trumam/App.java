@@ -21,7 +21,7 @@ public class App extends Application {
         // Window main = loader.getController();
         // main.initModel(model);
         // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
-        primaryStage.setTitle("Kmeans++ distribuido");
+        primaryStage.setTitle("Movies WebCrawler");
         primaryStage.setScene(scene);
         //<--Create main window
         primaryStage.show();
@@ -29,8 +29,7 @@ public class App extends Application {
     /**
      * Dummy main method
      */
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ){
         launch(args);
     }
 }
