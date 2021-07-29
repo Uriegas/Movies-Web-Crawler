@@ -8,17 +8,34 @@ import java.io.FileWriter;
 public class CreateCSV {
     String path;
 
+    /**
+     * Constructor de la clase CreateCSV
+     * @param direccion
+     */
     public CreateCSV(String direccion){
         this.setPath(direccion);
     }
 
+    /**
+     * Método get para el atributo path
+     */
     public String getPath(){
         return path;
     }
+
+    /**
+     * Método set para el atributo path
+     * @param direccion
+     */
     public void setPath(String direccion){
         this.path = direccion;
     }
 
+    /**
+     * Método que genera el archivo CSV a partir de un objeto de tipo Movie
+     * @param pelicula
+     * @param nombreArchivo
+     */
     public void crearCSV(Movie pelicula, String nombreArchivo){
         String delimitador=",";
         final String salto = "\n";
@@ -37,6 +54,11 @@ public class CreateCSV {
         }
     }
 
+    /**
+     * Método que genera un archivo CSV a partir de un Array de tipo Movie
+     * @param arrayPelicula
+     * @param nombreArchivo
+     */
     public void crearCSV(ArrayList<Movie> arrayPelicula, String nombreArchivo){
         String delimitador=",";
         int contador=arrayPelicula.size();
@@ -45,12 +67,6 @@ public class CreateCSV {
         try {
             FileWriter fw = new FileWriter(nombreArchivo);
             for(int i=0; i<contador; i++){
-                /*System.out.println(arrayPelicula.get(i));
-                String stringMovie = String.valueOf(arrayPelicula.get(i));
-                String [] strMovie = stringMovie.split(",");
-                String title = strMovie[0];
-                String tags = strMovie[1];
-                String synopsis = strMovie[2];*/
                 Movie currentMovie = new Movie(arrayPelicula.get(i));
                 //Movie currentMovie = new Movie(arrayPelicula.get(i).getTitle(), arrayPelicula.get(i).getTag(),
                  //       arrayPelicula.get(i).getSynopsis());
@@ -66,6 +82,7 @@ public class CreateCSV {
             fw.close();
         } catch (IOException e) {
             // Error al crear el archivo
+            System.out.println("Verifique que el archivo no esté abrierto anteriormente.");
             e.printStackTrace();
         }
     }
