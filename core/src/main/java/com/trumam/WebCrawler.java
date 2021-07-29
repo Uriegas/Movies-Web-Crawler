@@ -2,11 +2,9 @@ package com.trumam;
 
 import com.trumam.net.LinkFinder;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.concurrent.*;
 
 public class WebCrawler implements LinkHandler {
 
@@ -48,4 +46,14 @@ public class WebCrawler implements LinkHandler {
     public boolean visited(String link) {
         return visitedLinks.contains(link);
     }
+    public ArrayList<Movie> crawl(String url) { System.out.println("crawling: " + url); return new ArrayList<Movie>(); }
+
+	/**
+	 * Exception to handle the case when the user enters an invalid URL
+	 */
+	public class URLException extends Exception{
+		public URLException(String message){
+			super(message);
+		}
+	} 
 }
