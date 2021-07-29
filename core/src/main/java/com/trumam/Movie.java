@@ -16,6 +16,11 @@ public class Movie {
 		this.setTag(tag);
 		this.setSynopsis(synopsis);
 	}
+	public Movie(Movie mv){
+		this.title= mv.getTitle();
+		this.tag= mv.getTag();
+		this.synopsis= mv.getSynopsis();
+	}
 	/**
 	 * Get the title of the movie
 	 */
