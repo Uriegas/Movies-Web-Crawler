@@ -1,12 +1,23 @@
 package com.trumam;
 
-import java.lang.reflect.Array;
 import java.util.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.FileWriter;
 
 public class CreateCSV {
+    String path;
+
+    public CreateCSV(String direccion){
+        this.setPath(direccion);
+    }
+
+    public String getPath(){
+        return path;
+    }
+    public void setPath(String direccion){
+        this.path = direccion;
+    }
 
     public void crearCSV(Movie pelicula, String nombreArchivo){
         String delimitador=",";
@@ -60,8 +71,6 @@ public class CreateCSV {
     }
 
     public static void main(String[] args) {
-        //El path puede asignarse con un método
-        final String nombreDeArchivo = "/home/marlly/Descargas/archivoCSV.csv";
         Movie peli1=new Movie("The darkest minds","Cience fiction","Ruby Daly is an orange...");
         Movie peli2=new Movie("The help","Drama","A time ago, when racism was common...");
         Movie peli3=new Movie("Luca","Comedy","Luca is a sea moster, young, curios...");
@@ -69,14 +78,8 @@ public class CreateCSV {
         arrayPeliculas.add(peli1);
         arrayPeliculas.add(peli2);
         arrayPeliculas.add(peli3);
-        /*String strMovie = String.valueOf(arrayPeliculas.get(0));
-        String str2Movie = String.valueOf(arrayPeliculas.get(1));
-        String str3Movie = String.valueOf(arrayPeliculas.get(2));
-        System.out.println("Contenido del array[0] = "+strMovie);
-        System.out.println("Contenido del array[1] = "+str2Movie);
-        System.out.println("Contenido del array[2] = "+str3Movie);*/
-        CreateCSV crearArchivoCSV = new CreateCSV();
-        crearArchivoCSV.crearCSV(arrayPeliculas, nombreDeArchivo);
+        CreateCSV crearArchivoCSV = new CreateCSV("/home/marlly/Descargas/archivoCSV.csv");
+        crearArchivoCSV.crearCSV(arrayPeliculas, crearArchivoCSV.getPath());
     }
 
 }
