@@ -82,21 +82,7 @@ public class CreateCSV {
             fw.close();
         } catch (IOException e) {
             // Error al crear el archivo
-            System.out.println("Verifique que el archivo no esté abrierto anteriormente.");
-            e.printStackTrace();
+            System.out.println("Verifique que el archivo no esté abrierto o que el path sea el indicado.");
         }
     }
-
-    public static void main(String[] args) {
-        Movie peli1=new Movie("The darkest minds","Cience fiction","Ruby Daly is an orange...");
-        Movie peli2=new Movie("The help","Drama","A time ago, when racism was common...");
-        Movie peli3=new Movie("Luca","Comedy","Luca is a sea moster, young, curios...");
-        ArrayList<Movie> arrayPeliculas = new ArrayList<>();
-        arrayPeliculas.add(peli1);
-        arrayPeliculas.add(peli2);
-        arrayPeliculas.add(peli3);
-        CreateCSV crearArchivoCSV = new CreateCSV("/home/marlly/Descargas/archivoCSV.csv");
-        crearArchivoCSV.crearCSV(arrayPeliculas, crearArchivoCSV.getPath());
-    }
-    
 }
