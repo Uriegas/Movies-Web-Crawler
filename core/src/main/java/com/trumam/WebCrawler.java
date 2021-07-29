@@ -8,14 +8,14 @@ import java.util.HashSet;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class WebCrawler6 implements LinkHandler {
+public class WebCrawler implements LinkHandler {
 
     private final Collection<String> visitedLinks = Collections.synchronizedSet(new HashSet<String>());
     // private final Collection<String> visitedLinks = Collections.synchronizedList(new ArrayList<String>());
     private String url;
     private ExecutorService executorService;
 
-    public WebCrawler6(String startingURL, int maxThreads) {
+    public WebCrawler(String startingURL, int maxThreads) {
         this.url = startingURL;
         executorService = Executors.newFixedThreadPool(maxThreads);
     }
