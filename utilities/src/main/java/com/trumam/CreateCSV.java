@@ -98,5 +98,5 @@ public class CreateCSV {
         CreateCSV crearArchivoCSV = new CreateCSV("/home/marlly/Descargas/archivoCSV.csv");
         crearArchivoCSV.crearCSV(arrayPeliculas, crearArchivoCSV.getPath());
     }
-
+    
 }
