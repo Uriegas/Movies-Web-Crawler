@@ -68,4 +68,10 @@ public class Movie {
 	public String toString() {
 		return title + "," + tag + "," + synopsis;
 	}
+	/**
+	 * Compare two movies. <p>
+	 */
+	public boolean equals(Movie mv) {
+		return this.toString().equals(mv.toString());
+	}
 }

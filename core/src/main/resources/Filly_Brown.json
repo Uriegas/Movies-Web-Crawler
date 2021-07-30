@@ -1,0 +1,113 @@
+{
+	"@context": "https://schema.org",
+	"@type": "Movie",
+	"url": "/title/tt1869425/",
+	"name": "Filly Brown",
+	"image": "https://m.media-amazon.com/images/M/MV5BMTU2ODA0OTI4Ml5BMl5BanBnXkFtZTcwMjM5MDkzOQ@@._V1_.jpg",
+	"contentRating": "R",
+	"genre": [
+		"Drama",
+		"Music"
+	],
+	"actor": [
+		{
+			"@type": "Person",
+			"url": "/name/nm1752221/",
+			"name": "Gina Rodriguez"
+		},
+		{
+			"@type": "Person",
+			"url": "/name/nm1648381/",
+			"name": "Jenni Rivera"
+		},
+		{
+			"@type": "Person",
+			"url": "/name/nm0001617/",
+			"name": "Lou Diamond Phillips"
+		}
+	],
+	"director": [
+		{
+			"@type": "Person",
+			"url": "/name/nm0216459/",
+			"name": "Youssef Delara"
+		},
+		{
+			"@type": "Person",
+			"url": "/name/nm0201524/",
+			"name": "Michael D. Olmos"
+		}
+	],
+	"creator": [
+		{
+			"@type": "Organization",
+			"url": "/company/co0138242/"
+		},
+		{
+			"@type": "Organization",
+			"url": "/company/co0000821/"
+		},
+		{
+			"@type": "Organization",
+			"url": "/company/co0332970/"
+		},
+		{
+			"@type": "Person",
+			"url": "/name/nm0216459/",
+			"name": "Youssef Delara"
+		},
+		{
+			"@type": "Person",
+			"url": "/name/nm0201524/",
+			"name": "Michael D. Olmos"
+		},
+		{
+			"@type": "Person",
+			"url": "/name/nm1226077/",
+			"name": "Victor Teran"
+		}
+	],
+	"trailer": {
+		"@type": "VideoObject",
+		"name": "Theatrical Version",
+		"embedUrl": "/video/imdb/vi586786329",
+		"thumbnail": {
+			"@type": "ImageObject",
+			"contentUrl": "https://m.media-amazon.com/images/M/MV5BMTg1MDY1MDYyN15BMl5BanBnXkFtZTcwMzAwOTEzOQ@@._V1_.jpg"
+		},
+		"thumbnailUrl": "https://m.media-amazon.com/images/M/MV5BMTg1MDY1MDYyN15BMl5BanBnXkFtZTcwMzAwOTEzOQ@@._V1_.jpg",
+		"description": "Maria Jose &apos;Majo&apos; Tonorio is a tough LA street poet who spits from the heart. After meeting a talented DJ she cuts her first demo under the guidance of a small time hustler more interested in promoting Majo&apos;s sexuality than her lyrics. Soon a major label and its strong-arm executive come calling. Convinced that a record deal will deliver much needed money for the family, Majo is suddenly faced with some stark choices. Does she accept the deal and turn her back on the friends who got her to the precipice of success or does she let a golden opportunity slip away. "
+	},
+	"datePublished": "2013-04-19",
+	"description": "A promising hip-hop rhymer from Los Angeles finds herself in a gray area when a record producer offers her a compromising shot at stardom.",
+	"keywords": "producer",
+	"review": {
+		"@type": "Review",
+		"itemReviewed": {
+			"@type": "CreativeWork",
+			"url": "/title/tt1869425/"
+		},
+		"author": {
+			"@type": "Person",
+			"name": "gemedrano"
+		},
+		"dateCreated": "2013-10-20",
+		"inLanguage": "English",
+		"name": "Very good actress, good script, bad math.",
+		"reviewBody": "IMHO this film seemed far superior to the IMDb rating. Reading about this rate I discovered that apply a weighted value, the valuation algorithm is secret and applies different &quot;filters&quot;. It is quite possible that the highest and lowest votes are discarded. The performance of Gina Rodriguez is so good that many users vote 10, but that does not look at the results. After you see the movie, wait some days before to vote and rate the whole film, 7 or 8 is more accurate and we will look how rating improves. Please do not be discouraged by the low score and enjoy the story and the music. Despite his early death, the actress give us a huge sample of talent.",
+		"reviewRating": {
+			"@type": "Rating",
+			"worstRating": 1,
+			"bestRating": 10,
+			"ratingValue": 8
+		}
+	},
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingCount": 1079,
+		"bestRating": 10,
+		"worstRating": 1,
+		"ratingValue": 5.7
+	},
+	"duration": "PT1H20M"
+}

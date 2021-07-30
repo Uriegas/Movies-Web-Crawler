@@ -9,7 +9,7 @@ public class App
     public static void main( String[] args )
     {
         try {
-            new WebCrawler("https://es.wikipedia.org/wiki/Roma", 64).startCrawling();
+            new WebCrawler("https://imdb.com/", 64, 2).startCrawling();
             //new WebCrawler7("https://es.wikipedia.org/wiki/Roma", 64).startCrawling();
         }
         catch (Exception e) {
