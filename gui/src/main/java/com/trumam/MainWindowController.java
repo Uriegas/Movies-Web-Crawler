@@ -100,7 +100,7 @@ public class MainWindowController {
 			try{
 				this.model.moviesProperty().clear();
 				String s = validateURL(urlLink.getText());
-				crawler.crawl(s);
+				crawler.crawl(s, 64, this.model.getDepth());
 			}catch(WebCrawler.URLException e1){//Alert not a valid url
 				Alert alert = new Alert(Alert.AlertType.ERROR);
 				alert.setTitle("Error");

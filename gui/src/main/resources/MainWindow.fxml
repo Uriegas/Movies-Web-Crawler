@@ -19,14 +19,14 @@
       <Label minHeight="16" minWidth="69" text="© Chika chika Yeah" BorderPane.alignment="CENTER" />
    </bottom>
    <center>
-      <TableView fx:id="table" BorderPane.alignment="CENTER">
+      <TableView fx:id="table">
          <BorderPane.margin>
             <Insets bottom="5.0" left="10.0" right="5.0" />
          </BorderPane.margin>
          <columns>
-            <TableColumn fx:id="title" prefWidth="181.0" text="Title" />
-            <TableColumn fx:id="tag" prefWidth="84.0" text="Tag" />
-            <TableColumn fx:id="synopsis" prefWidth="355.0" text="Synopsis" />
+            <TableColumn fx:id="title" prefWidth="242.0" text="Title" />
+            <TableColumn fx:id="tag" text="Tag" />
+            <TableColumn fx:id="synopsis" prefWidth="298.0" resizable="false" text="Synopsis" />
          </columns>
       </TableView>
    </center>
