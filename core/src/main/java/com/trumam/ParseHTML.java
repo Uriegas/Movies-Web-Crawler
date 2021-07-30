@@ -4,10 +4,8 @@ import java.io.*;
 import java.net.*;
 
 import org.htmlparser.*;
-import org.htmlparser.filters.*;
 import org.htmlparser.tags.*;
 import org.htmlparser.util.NodeList;
-import org.json.*;
 import org.json.simple.*;
 import org.json.simple.parser.*;
 import java.util.*;

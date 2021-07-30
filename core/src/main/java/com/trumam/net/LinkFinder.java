@@ -51,11 +51,10 @@ public class LinkFinder implements Runnable {
                         urls.add(extracted.getLink());
                 }
 
-                // visitatamos el link
                 linkHandler.addVisited(url); // Agregar a visitados para no volver a visitarlo
 
-                if (linkHandler.size() == 50)
-                    System.out.println("Tiempo para visitar 50 links = " + (System.nanoTime() - t0) / 1000000000.0 + " segundos");
+                // if (linkHandler.size() == 50)
+                //     System.out.println("Tiempo para visitar 50 links = " + (System.nanoTime() - t0) / 1000000000.0 + " segundos");
 
                 for (String l: urls)
                     linkHandler.queueLink(l);
