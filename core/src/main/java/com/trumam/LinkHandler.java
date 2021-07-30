@@ -1,13 +1,15 @@
 package com.trumam;
 
-public interface LinkHandler {
+import java.net.URL;
+
+public interface LinkHandler<T> {
 
     /**
      * Guarda el link en la cosa
      * @param link
      * @throws Exception
      */
-    void queueLink(String link) throws Exception;
+    void queueLink(URL link) throws Exception;
 
     /**
      * Retorna el número de links visitados
@@ -20,12 +22,12 @@ public interface LinkHandler {
      * @param link
      * @return
      */
-    boolean visited(String link);
+    boolean visited(URL link);
 
     /**
      * Marca el link como visitado
      * @param link
      */
-    void addVisited(String link);
+    void addVisited(URL link, T datatype);
     
 }

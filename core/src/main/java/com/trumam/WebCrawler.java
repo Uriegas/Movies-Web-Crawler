@@ -2,29 +2,31 @@ package com.trumam;
 
 import com.trumam.net.LinkFinder;
 
+import java.net.URL;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class WebCrawler implements LinkHandler {
+public class WebCrawler implements LinkHandler<Movie> {
 
-    private final Collection<String> visitedLinks = Collections.synchronizedSet(new HashSet<String>());
+    private final Collection<URL> visitedLinks = Collections.synchronizedSet(new HashSet<URL>());
+    private final Collection<Movie> visitedMovies = Collections.synchronizedSet(new HashSet<Movie>());
     // private final Collection<String> visitedLinks = Collections.synchronizedList(new ArrayList<String>());
-    private String url;
+    private URL url;
     private ExecutorService executorService;
     public static int depth = 0;
 
-    public WebCrawler(String startingURL, int maxThreads, int depth) {
+    public WebCrawler(URL startingURL, int maxThreads, int depth) {
         this.url = startingURL;
         executorService = Executors.newFixedThreadPool(maxThreads);
         WebCrawler.depth = depth;
     }
 
     @Override
-    public void queueLink(String link) throws Exception {
+    public void queueLink(URL link) throws Exception {
         startNewThread(link);
     }
 
-    private ArrayList<Movie> startNewThread(String link) throws Exception {
+    private ArrayList<Movie> startNewThread(URL link) throws Exception {
         executorService.execute(new LinkFinder(link, this));
         return null;
     }
@@ -35,17 +37,18 @@ public class WebCrawler implements LinkHandler {
     }
 
     @Override
-    public int size() {
+    public int size() {//Visited links and movies should be of the same size
         return visitedLinks.size();
     }
 
     @Override
-    public void addVisited(String s) {
+    public void addVisited(URL s, Movie m) {
         visitedLinks.add(s);
+        visitedMovies.add(m);
     }
 
     @Override
-    public boolean visited(String link) {
+    public boolean visited(URL link) {
         return visitedLinks.contains(link);
     }
     /**
@@ -56,7 +59,7 @@ public class WebCrawler implements LinkHandler {
      * @return list of movies
      * @throws Exception
      */
-    public ArrayList<Movie> crawl(String url, int maxThreads, int depth) throws Exception {
+    public ArrayList<Movie> crawl(URL url, int maxThreads, int depth) throws Exception {
         if(depth < 0) // if depth is negative throw exception
             throw new IllegalArgumentException("Depth cannot be negative");
         WebCrawler.depth = depth;
@@ -79,6 +82,6 @@ public class WebCrawler implements LinkHandler {
 	} 
 
     public static void main(String[] args) throws Exception {
-        new WebCrawler("https://www.rottentomatoes.com/top/bestofrt/", 64, 2).startCrawling(); //Top peliculas en RottenTomatoes
+        new WebCrawler(new URL("https://www.rottentomatoes.com/top/bestofrt/"), 64, 2).startCrawling(); //Top peliculas en RottenTomatoes
     }
 }
