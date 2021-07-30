@@ -5,12 +5,12 @@ import java.io.*;
 import java.util.regex.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.stage.FileChooser;
 /**
  * Controller of the Main Window
  */
 public class MainWindowController {
-	@FXML private TableView<Model.MovieFX> table;
 	@FXML private TextField urlLink;
 	@FXML private Spinner<Integer> spinner;
 	@FXML private Button crawl;
@@ -18,11 +18,15 @@ public class MainWindowController {
 	@FXML private ProgressBar progress;
 	@FXML private Button exportData;
 
+	// --> Table attributes
+	@FXML private TableView<Model.MovieFX> table;
 	@FXML private TableColumn<Model.MovieFX, String> title;
 	@FXML private TableColumn<Model.MovieFX, String> tag;
 	@FXML private TableColumn<Model.MovieFX, String> synopsis;
+	// <-- Table attributes
+
 	private Model model;
-	Pattern pattern = Pattern.compile("^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");// regex to check if the link is valid
+	private Pattern pattern = Pattern.compile("^(https?)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]");// regex to check if the link is valid
 
 	WebCrawler crawler;
 
@@ -124,26 +128,12 @@ public class MainWindowController {
 		});
 		// <-- When help button is clicked show help window
 
+		// --> When in textfield is pressed enter, then start crawling
+		urlLink.setOnKeyPressed(e -> {if(e.getCode() == KeyCode.ENTER) crawl(); });
+		// <-- When in textfield is pressed enter, then start crawling
+
 		// --> When export button is clicked export data to file
-		exportData.setOnAction(e ->{
-			try{ // Export data to csv file
-				FileChooser fileChooser = new FileChooser();
-				fileChooser.setTitle("Export data");
-				fileChooser.setInitialFileName(((this.model.getUrl()==null || this.model.getUrl().isEmpty() ||this.model.getUrl().equals(""))
-												? "untitled"
-												: (this.model.getUrl().split("/")[this.model.getUrl().split("/").length-1]))
-												+ "_depth_" + this.model.getDepth() + ".csv");
-				File file = fileChooser.showSaveDialog(null);
-				// if(file != null)
-				// 	Utilities.exportData(this.model.getMovies(), file);
-			}catch(Exception e1){ // If export fails show error
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Error");
-				alert.setHeaderText("Couldn't export data");
-				alert.setContentText("Please try again");
-				alert.showAndWait();
-			}
-		});
+		exportData.setOnAction(e ->{ crawl(); });
 		// <-- When export button is clicked export data to file
 	}
 	/**
@@ -154,5 +144,30 @@ public class MainWindowController {
 			return url;
 		else
 			throw crawler.new URLException("Invalid URL:" + url);
+	}
+	/**
+	 * Method to handle crawl process with validation, exceptions and progress bar
+	 * Necesarry due to the fact that it is used inside two methods.
+	 */
+	private void crawl(){
+		try{ // Export data to csv file
+			FileChooser fileChooser = new FileChooser();
+			fileChooser.setTitle("Export data");
+			fileChooser.setInitialFileName(((this.model.getUrl()==null || this.model.getUrl().isEmpty() ||this.model.getUrl().equals(""))
+											? "untitled"
+											: (this.model.getUrl().split("/")[this.model.getUrl().split("/").length-1]))
+											+ "_depth_" + this.model.getDepth() + ".csv");
+			File file = fileChooser.showSaveDialog(null);
+			if(file != null){
+				CreateCSV c = new CreateCSV(file.toString());
+				c.crearCSV(this.model.toMovies(), file.getName());
+			}
+		}catch(Exception e1){ // If export fails show error
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText("Couldn't export data");
+			alert.setContentText("Please try again");
+			alert.showAndWait();
+		}
 	}
 }

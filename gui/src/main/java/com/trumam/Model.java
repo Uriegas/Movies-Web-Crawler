@@ -51,6 +51,9 @@ public class Model {
 		public String toString(){
 			return this.title.get() + ',' + this.tag.get() + ',' + this.synopsis.get();
 		}
+		public Movie toMovie(){
+			return new Movie(this.title.get(), this.tag.get(), this.synopsis.get());
+		}
 	}
 	public StringProperty urlProperty(){
 		return this.url;
@@ -63,6 +66,13 @@ public class Model {
 	}
 	public ObservableList<MovieFX> getMovies(){
 		return this.movies;
+	}
+	public ArrayList<Movie> toMovies(){
+		ArrayList<Movie> movies = new ArrayList<Movie>();
+		for(MovieFX movie : this.movies){
+			movies.add(movie.toMovie());
+		}
+		return movies;
 	}
 	public void addMovie(MovieFX movie){
 		this.movies.add(movie);
