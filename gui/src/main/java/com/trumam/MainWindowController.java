@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.regex.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.FileChooser;
 /**
@@ -46,8 +47,7 @@ public class MainWindowController {
 		//<-- Bind the spinner to the depth of the crawler
 
 		// --> Test movie data (for debug)
-		model.addMovie(model.new MovieFX("The Godfather", "Crime", "https://www.imdb.com/title/tt0068646/"));
-		model.addMovie(model.new MovieFX("The Godfather: Part II", "Crime", "https://www.imdb.com/title/tt0068646/"));
+		// model.addMovie(model.new MovieFX("The Godfather", "Crime", "A very good movie"));
 		// <-- Test movie data
 
 		// --> Set cells and items of the table (data binding)
@@ -102,29 +102,17 @@ public class MainWindowController {
 				String s = validateURL(urlLink.getText());
 				crawler.crawl(s, 64, this.model.getDepth());
 			}catch(WebCrawler.URLException e1){//Alert not a valid url
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Error");
-				alert.setHeaderText("Invalid URL");
-				alert.setContentText("Please enter a valid URL");
-				alert.showAndWait();
+				createAlert( "Error", "Invalid URL", "Please enter a valid URL", AlertType.ERROR);
 			}
 			catch (Exception e2){
-				Alert alert = new Alert(Alert.AlertType.ERROR);
-				alert.setTitle("Error");
-				alert.setHeaderText("Couldn't crawl this link");
-				alert.setContentText("Please try again");
-				alert.showAndWait();
+				createAlert("Error", "Couldn't crawl this link", "Please try again", AlertType.ERROR);
 			}
 		});
 		// <-- When crawl button is clicked clear the table and start crawling
 
 		// --> When help button is clicked show help window
 		help.setOnAction(e ->{
-			Alert alert = new Alert(Alert.AlertType.INFORMATION);
-			alert.setTitle("Help");
-			alert.setHeaderText("Help");
-			alert.setContentText("Add a valid IMDB or RottenTomatoes URL to crawl");
-			alert.showAndWait();
+			createAlert("Help", "Help", "Add a valid IMDB or RottenTomatoes URL to crawl", Alert.AlertType.INFORMATION);
 		});
 		// <-- When help button is clicked show help window
 
@@ -163,11 +151,18 @@ public class MainWindowController {
 				c.crearCSV(this.model.toMovies(), file.getName());
 			}
 		}catch(Exception e1){ // If export fails show error
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setTitle("Error");
-			alert.setHeaderText("Couldn't export data");
-			alert.setContentText("Please try again");
-			alert.showAndWait();
+			createAlert("Error", "Couldn't export data", "Please try again", AlertType.ERROR);
 		}
+	}
+	/**
+	 * Method to create an alert, just to make the code mode readable and small
+	 */
+	private void createAlert(String title, String header, String content, Alert.AlertType type){
+		Alert alert = new Alert(type);
+		alert.getDialogPane().getStylesheets().add("/estilo.css");
+		alert.setTitle(title);
+		alert.setHeaderText(header);
+		alert.setContentText(content);
+		alert.showAndWait();
 	}
 }

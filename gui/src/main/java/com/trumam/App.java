@@ -21,22 +21,16 @@ public class App extends Application {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/MainWindow.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        // Window main = loader.getController();
-        // main.initModel(model);
-        // scene.getStylesheets().add(getClass().getResource("/styles/Styles.css").toExternalForm());
         primaryStage.setTitle("Movies WebCrawler");
         primaryStage.setScene(scene);
         //<--Create main window
         primaryStage.getIcons().add(new Image("/spider.ico"));
         primaryStage.setOnCloseRequest(e -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.getDialogPane().getStylesheets().add("/estilo.css");
             alert.setTitle("Confirmation");
             alert.setHeaderText("Are you sure you want to exit?");
             alert.setContentText("You are about to exit the application.");
-            // alert.showAndWait();
-            // if (alert.getResult() == ButtonType.OK) {
-            //     System.exit(0);
-            // }
             Button exitButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
             Button closeButton = (Button)alert.getDialogPane().lookupButton(ButtonType.CANCEL);
             closeButton.setText("Cancelar");
