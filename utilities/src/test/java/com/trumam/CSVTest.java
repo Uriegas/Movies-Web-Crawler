@@ -2,11 +2,6 @@ package com.trumam;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.*;
-
 import java.util.ArrayList;
 
 public class CSVTest {
